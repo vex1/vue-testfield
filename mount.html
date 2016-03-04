@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<!-- http://localhost/cyber/script/evo/vue/testfield/mount.html -->
+<head>
+  <meta charset="UTF-8"/>
+  <title>TestField Vue!</title>
+  <script src="http://cdn.jsdelivr.net/vue/1.0.17/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+  <span id="mount1">Hello</span>
+  <button @click="update">Mount</button>
+</div>
+
+<template id="tp1">
+  <strong>{{message }}</strong>
+</template>
+
+<script>
+  // Data
+  var myData = {
+    message: 'Hello Vue.js!'
+  };
+  // create reusable constructor
+  var Component = Vue.extend({
+    template: '#tp1'
+  });
+  // create an instance of Component
+  var c1 = new Component({
+    data: myData
+  });
+  // Vue
+  new Vue({
+    el: '#app',
+    methods: {
+      update: function () {
+        c1.$mount('#mount1');
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
